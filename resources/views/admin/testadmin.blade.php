@@ -1,0 +1,1 @@
+<h1>test admin page</h1>
