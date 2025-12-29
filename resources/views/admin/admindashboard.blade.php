@@ -58,6 +58,11 @@
             <li class="active">
                 <a href="#"><i class="icon-home"></i> Home</a>
             </li>
+            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category</a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('admin.addcategory') }}">Add Category</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
@@ -69,7 +74,8 @@
         </div>
 
         <section class="container-fluid">
-            <h3>Welcome to Admin Dashboard</h3>
+          @yield('addCategory')
+
         </section>
 
         <footer class="footer">

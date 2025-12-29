@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\testadmin;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -20,11 +21,11 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('admin')->group(function () {
-    Route::get('/admin_test', function () {
-        return view('admin.testadmin');
-    })->name('admin');
+    Route::get('/add_category', function () {
+        return view('admin.addcategory');
+    })->name('admin.addcategory');
+    Route::post('/addcategory', [AdminController::class, 'addCategory'])->name('admin.addCategoryData');
 });
-
 
 
 Route::post('/logout', function () {
