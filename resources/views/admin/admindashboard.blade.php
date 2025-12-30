@@ -3,7 +3,7 @@
 <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dark Bootstrap Admin</title>
+    <title>Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="admin/vendor/bootstrap/css/bootstrap.min.css">
@@ -49,8 +49,8 @@
                 <img src="admin/img/avatar-6.jpg" class="img-fluid rounded-circle">
             </div>
             <div class="title">
-                <h1 class="h5">Mark Stephen</h1>
-                <p>Web Designer</p>
+                <h1 class="h5">@if(Auth::check()){{ Auth::user()->name }}@endif</h1>
+                <p>Administrator</p>
             </div>
         </div>
 
@@ -61,6 +61,7 @@
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category</a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('admin.addcategory') }}">Add Category</a></li>
+                <li><a href="{{ route('admin.viewcategory') }}">View Category</a></li>
                 </ul>
             </li>
         </ul>
@@ -75,7 +76,8 @@
 
         <section class="container-fluid">
           @yield('addCategory')
-
+          @yield('viewCategory')
+          @yield('editCategory')
         </section>
 
         <footer class="footer">
