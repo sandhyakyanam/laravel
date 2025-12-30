@@ -55,13 +55,18 @@
         </div>
 
         <ul class="list-unstyled">
-            <li class="active">
+            <!-- <li class="active">
                 <a href="#"><i class="icon-home"></i> Home</a>
-            </li>
+            </li> -->
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category</a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('admin.addcategory') }}">Add Category</a></li>
                 <li><a href="{{ route('admin.viewcategory') }}">View Category</a></li>
+                </ul>
+            </li>
+            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product</a>
+                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('admin.addproduct') }}">Add Product</a></li>
                 </ul>
             </li>
         </ul>

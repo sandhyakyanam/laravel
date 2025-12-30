@@ -35,14 +35,19 @@ class AdminController extends Controller
     public function editCategory($id)
     {
         $data = Category::find($id);
-
         return view('admin.editCategory', compact('data'));
     }
 
     public function updateCategoryData(Request $request, $id)
     {
         $category = $request->category_name;
-        dump($category);
+        Category::where('id',$id)->update(['name'=>$category]);
+        return redirect()->back()->with('message','Category updated successfully');
+    }
 
+    public function addproduct()
+    {
+        $category = Category::all();
+        return view('admin.addproduct',compact('category'));
     }
 }

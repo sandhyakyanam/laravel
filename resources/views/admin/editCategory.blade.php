@@ -16,7 +16,7 @@
         <input type="text"
                class="form-control"
                name="category_name"
-                value="{{ $data->category_name }}"
+                value="{{ $data->name }}"
                required>
     </div>
 
