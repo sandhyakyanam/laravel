@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\testadmin;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,21 +17,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::middleware('admin')->group(function () {
     Route::get('/add_category', function () {
         return view('admin.addcategory');
     })->name('admin.addcategory');
     Route::post('/addcategory', [AdminController::class, 'addCategory'])->name('admin.addCategoryData');
-});
+    Route::get('/viewcategory', [AdminController::class, 'viewCategory'])->name('admin.viewcategory');
+    Route::get('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('admin.deleteCategory');
+    Route::get('/editCategory/{id}', [AdminController::class, 'editCategory'])->name('admin.editCategory');
+    Route::post('/updateCategory/{id}', [AdminController::class, 'updateCategoryData'])->name('admin.updateCategoryData');
 
+});
 
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
+
     return redirect('/login');
 });
-
 
 require __DIR__.'/auth.php';
