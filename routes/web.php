@@ -26,7 +26,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('admin.deleteCategory');
     Route::get('/editCategory/{id}', [AdminController::class, 'editCategory'])->name('admin.editCategory');
     Route::post('/updateCategory/{id}', [AdminController::class, 'updateCategoryData'])->name('admin.updateCategoryData');
-
+    Route::get('/viewproduct', [AdminController::class, 'viewproduct'])->name('admin.viewproduct');
+    Route::post('/addproduct', [AdminController::class, 'storeproduct'])->name('admin.storeproduct');
+    Route::get('/viewproductlisting', [AdminController::class, 'viewproductlisting'])->name('admin.viewproductlisting');
 });
 
 Route::post('/logout', function () {

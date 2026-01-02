@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="admin/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="admin/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="admin/css/font.css">
     <link rel="stylesheet" href="admin/css/style.default.css">
@@ -37,7 +38,6 @@
     </nav>
 </header>
 
-<!-- LOGOUT FORM (same page) -->
 <form id="logout-form" method="POST" action="/logout" style="display:none;">
     @csrf
 </form>
@@ -55,9 +55,6 @@
         </div>
 
         <ul class="list-unstyled">
-            <!-- <li class="active">
-                <a href="#"><i class="icon-home"></i> Home</a>
-            </li> -->
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category</a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('admin.addcategory') }}">Add Category</a></li>
@@ -66,7 +63,7 @@
             </li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product</a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="{{ route('admin.addproduct') }}">Add Product</a></li>
+                <li><a href="{{ route('admin.viewproduct') }}">Add Product</a></li>
                 </ul>
             </li>
         </ul>
@@ -83,11 +80,13 @@
           @yield('addCategory')
           @yield('viewCategory')
           @yield('editCategory')
+          @yield('addProduct')
+          @yield('viewProductListing')
         </section>
 
         <footer class="footer">
             <div class="container-fluid text-center">
-                <p>© 2018 Your Company</p>
+                <p>© 2026</p>
             </div>
         </footer>
     </div>
@@ -95,5 +94,31 @@
 
 <script src="admin/vendor/jquery/jquery.min.js"></script>
 <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!-- Buttons dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+<!-- Buttons -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#productTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy',
+            'csv',
+            'excel',
+            'pdf',
+            'print'
+        ]
+    });
+});
+</script>
 </body>
 </html>
